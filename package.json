@@ -1,0 +1,27 @@
+{
+  "name": "playwrigth-bdd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "report": "start test-results/reports/cucumber-report.html",
+    "test:uat": "ENV=uat cucumber-js --config=config/cucumber.js",
+    "test:regresion": "npm run test:uat -- --tags '@regresion'"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "playwright": "^1.56.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "cross-env": "^10.1.0",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
