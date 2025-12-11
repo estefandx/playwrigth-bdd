@@ -4,6 +4,11 @@ on:
   repository_dispatch:
     types: [trigger-automation]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -19,3 +24,27 @@ jobs:
 
       - name: Run tests
         run: npm run test:uat
+
+      - name: Generate HTML report
+        run: npm run report
+
+      - name: Save report to history
+        run: |
+          mkdir -p test-results/site/history
+          cp test-results/site/index.html test-results/site/history/$(date +'%Y%m%d%H%M%S').html
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: test-results/site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: tests
+    environment:
+      name: github-pages
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3

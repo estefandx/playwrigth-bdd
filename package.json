@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "report": "start test-results/reports/cucumber-report.html",
+    "report-open": "start test-results/reports/cucumber-report.html",
+    "report": "node report.js",
+    "post-report": "cp test-results/site/index.html test-results/site/history/$(date +'%Y%m%d%H%M%S').html",
     "test:uat": "ENV=uat cucumber-js --config=config/cucumber.js",
     "test:regresion": "npm run test:uat -- --tags '@regresion'"
   },
