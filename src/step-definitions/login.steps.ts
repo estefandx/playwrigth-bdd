@@ -32,3 +32,8 @@ Then("debo ver el mensaje de bienvenida", async function (this: CustomWorld) {
   const welcomeMessage = await this.page.locator(".app_logo");
    await expect(welcomeMessage).toHaveText("Swag Labs");
 });
+
+Then('debo ver un error', async function (this: CustomWorld)  {
+   const welcomeMessage = await this.page.locator(".app_logo");
+   await expect(welcomeMessage).toHaveText("Swag Labsdd");
+})
