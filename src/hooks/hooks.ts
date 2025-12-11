@@ -8,10 +8,12 @@ import { getEnv } from "../helpers/env/env";
 Before(async function (this: CustomWorld) {
    getEnv();
 
+   const isCI = process.env.CI === "true";
+
   // 🚀 Abrir navegador usando launchBrowser
   const { browser, context, page } = await launchBrowser({
     type: "chromium",
-    headless: false
+    headless: isCI ? true : false
   });
 
   // Guardamos los objetos en el World
