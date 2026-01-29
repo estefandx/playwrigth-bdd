@@ -7,11 +7,11 @@ import { config } from "../helpers/env/env";
 
 
 
-// 👉 URL tomada desde .env
+// 👉 URL taken from .env
 //const BASE_URL = process.env.BASE_URL
 
-Given("que el usuario está en la página de login", async function (this: CustomWorld) {
-  // Instanciamos el pageObject pasándole la page actual
+Given("the user is on the login page", async function (this: CustomWorld) {
+  // Instantiate the pageObject passing the current page
   // this.data["token"] = "test";
   this.loginPage = new LoginPage(this.page);
   await this.loginPage.navigateTo(config.BASE_URL!)
@@ -19,21 +19,21 @@ Given("que el usuario está en la página de login", async function (this: Custo
 });
 
 When(
-  "ingreso el usuario {string} y la contraseña {string}",
+  "I enter the username {string} and password {string}",
   async function (this: CustomWorld, username: string, password: string) {
   
     await this.loginPage.login(username, password);
-    //console.log("esto se envio desde otro step" +  this.data["token"])
+    //console.log("this was sent from another step" +  this.data["token"])
   }
 );
 
-Then("debo ver el mensaje de bienvenida", async function (this: CustomWorld) {
+Then("I should see the welcome message", async function (this: CustomWorld) {
   
   const welcomeMessage = await this.page.locator(".app_logo");
    await expect(welcomeMessage).toHaveText("Swag Labs");
 });
 
-Then('debo ver un error', async function (this: CustomWorld)  {
+Then('I should see an error', async function (this: CustomWorld)  {
    const welcomeMessage = await this.page.locator(".app_logo");
    await expect(welcomeMessage).toHaveText("Swag Labsdd");
 })

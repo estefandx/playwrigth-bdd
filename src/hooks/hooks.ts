@@ -10,13 +10,13 @@ Before(async function (this: CustomWorld) {
 
    const isCI = process.env.CI === "true";
 
-  // 🚀 Abrir navegador usando launchBrowser
+  // 🚀 Launch browser using launchBrowser
   const { browser, context, page } = await launchBrowser({
     type: "chromium",
     headless: isCI ? true : false
   });
 
-  // Guardamos los objetos en el World
+  // Store objects in the World
   this.browser = browser;
   this.context = context;
   this.page = page;
@@ -31,7 +31,7 @@ AfterStep(async function (this: CustomWorld) {
 
 After(async function (this: CustomWorld, scenario: ITestCaseHookParameter) {
 
-  // 📷 Screenshot si falló
+  // 📷 Screenshot if failed
 //   if (scenario.result?.status === Status.FAILED) {
 //     if (this.page) {
 //       const screenshot = await this.page.screenshot({
@@ -41,12 +41,12 @@ After(async function (this: CustomWorld, scenario: ITestCaseHookParameter) {
 //     }
 //   }
 
-  // Cerrar page
+  // Close page
   await this.page?.close();
 
-  // Cerrar context
+  // Close context
   await this.context?.close();
 
-  // Cerrar browser
+  // Close browser
   await this.browser?.close?.();
 });

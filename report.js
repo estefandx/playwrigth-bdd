@@ -4,9 +4,9 @@ report.generate({
     jsonDir: './test-results/reports',
     reportPath: './test-results/site',
     openReportInBrowser: false,
-    pageTitle: "Reporte de Automatización",
-    reportName: "Ejecución Automatizada",
-    pageFooter: "<div style='text-align:center'>Reporte generado el: " + new Date().toLocaleString() + "</div>",
+    pageTitle: "Automation Report",
+    reportName: "Automated Execution",
+    pageFooter: "<div style='text-align:center'>Report generated on: " + new Date().toLocaleString() + "</div>",
     displayDuration: true,
     metadata: {
         browser: { name: "chromium", version: "latest" },
@@ -14,10 +14,10 @@ report.generate({
         platform: { name: "Windows", version: "10" }
     },
     customData: {
-        title: "Información de ejecución",
+        title: "Execution Information",
         data: [
-            { label: "Fecha", value: new Date().toLocaleString() },
-            { label: "Ejecutor", value: "GitHub Actions" }
+            { label: "Date", value: new Date().toLocaleString() },
+            { label: "Executor", value: "GitHub Actions" }
         ]
     }
 });

@@ -31,13 +31,13 @@ export async function launchBrowser(options: BrowserOptions): Promise<LaunchResu
     let context: BrowserContext;
     let page: Page;
 
-    // Ruta perfil Chrome
+    // Chrome profile path
     const chromeDir =
         os.platform().includes("win")
             ? process.env.LOCALAPPDATA + "\\Google\\Chrome\\User Data\\Default"
             : "~/.config/chromium";
 
-    // ⭐ Seleccionar navegador
+    // ⭐ Select browser
     if (type === "chrome-persistent") {
         context = await chromium.launchPersistentContext(chromeDir, {
             ...commonOptions,
@@ -56,7 +56,7 @@ export async function launchBrowser(options: BrowserOptions): Promise<LaunchResu
     else if (type === "webkit") browser = await webkit.launch(commonOptions);
     else browser = await chromium.launch(commonOptions);
 
-    // Crear context y page cuando NO es persistente
+    // Create context and page when NOT persistent
     context = await browser.newContext();
     page = await context.newPage();
 

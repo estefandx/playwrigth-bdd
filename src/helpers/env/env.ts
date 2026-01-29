@@ -2,7 +2,7 @@
 import * as dotenv from "dotenv";
 import * as path from "path";
 
-// Objeto donde guardaremos la configuración cargada
+// Object where we will save the loaded configuration
 export const config: {
     ENV?: string;
     BASE_URL?: string;
@@ -20,13 +20,13 @@ export function getEnv() {
 
     //const envPath = path.resolve(process.cwd(), envFile);
      const envPath = path.resolve(__dirname, envFile);
-    console.log("ruta " + envPath)
+    console.log("path " + envPath)
 
-    console.log(`🔧 Cargando configuración desde: ${envFile}`);
+    console.log(`🔧 Loading configuration from: ${envFile}`);
 
     dotenv.config({ path: envPath });
 
-    // Asignamos valores al objeto config
+    // Assign values to the config object
     config.ENV = env;
     config.BASE_URL = process.env.BASE_URL || "";
     config.USER = process.env.USER || "";

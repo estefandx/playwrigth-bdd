@@ -2,20 +2,20 @@
 
 **Playwright + Cucumber (BDD) + TypeScript + Page Object Model + Multi-Environment**
 
-Este proyecto es un framework de automatización end-to-end basado en Playwright, utilizando Cucumber para escribir pruebas en formato Gherkin (Given/When/Then) y TypeScript para maximizar escalabilidad y mantenibilidad.
+This project is an end-to-end automation framework based on Playwright, using Cucumber to write tests in Gherkin format (Given/When/Then) and TypeScript to maximize scalability and maintainability.
 
-## ✨ Características
+## ✨ Features
 
 * 🟦 **Page Object Model (POM)**
-* 🌱 **Ejecución por ambientes** (.env.dev, .env.uat, etc.)
-* 🧩 **Custom World** con variables compartidas entre steps
-* 🧪 **Validaciones** con Playwright `expect()`
-* 📄 **Reportes HTML** con Cucumber
-* 🏷️ **Filtro por tags**
+* 🌱 **Multi-environment execution** (.env.dev, .env.uat, etc.)
+* 🧩 **Custom World** with shared variables between steps
+* 🧪 **Validations** with Playwright `expect()`
+* 📄 **HTML Reports** with Cucumber
+* 🏷️ **Tag filtering**
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 ```
 playwright-bdd/
 │
@@ -49,38 +49,38 @@ playwright-bdd/
 
 ---
 
-## ⚙️ Instalación
+## ⚙️ Installation
 ```bash
 npm install
 ```
 
 ---
 
-## 🌎 Configuración de Ambientes (.env)
+## 🌎 Environment Configuration (.env)
 
-El proyecto soporta múltiples ambientes:
+The project supports multiple environments:
 
 * `.env.dev`
 * `.env.uat`
 * `.env.qa`
 
-### Ejemplo de archivo `.env`:
+### Example `.env` file:
 ```env
-BASE_URL=https://mi-app.com
+BASE_URL=https://my-app.com
 USER=admin
 PASS=123456
 HEADLESS=true
 SLOWMO=0
 ```
 
-### 🧠 Sistema de carga de entorno
+### 🧠 Environment Loading System
 
-**Archivo responsable:**
+**Responsible file:**
 ```
 src/helper/env/env.ts
 ```
 
-El archivo `.env` se carga de acuerdo al valor de la variable `ENV`:
+The `.env` file is loaded according to the `ENV` variable value:
 ```bash
 ENV=dev
 ENV=uat
@@ -88,36 +88,36 @@ ENV=uat
 
 ---
 
-## ▶️ Ejecución de Pruebas
+## ▶️ Test Execution
 
-### Ejecutar en ambiente UAT
+### Run in UAT environment
 ```bash
 npm run test:uat
 ```
 
-### Ejecutar con tags específicos
+### Run with specific tags
 ```bash
-npm run test:uat -- --tags "@regresion"
+npm run test:uat -- --tags "@regression"
 ```
 
-### Alternativa con variable de entorno
+### Alternative with environment variable
 ```bash
 ENV=uat cucumber-js --config=config/cucumber.js --tags "@smoke"
 ```
 
-### Ejecución por defecto
+### Default execution
 ```bash
 npx cucumber-js --config=config/cucumber.js
 ```
 
 ---
 
-## 📄 Generar Reporte HTML
+## 📄 Generate HTML Report
 ```bash
 npm run report
 ```
 
-El reporte se genera en:
+The report is generated in:
 ```
 test-results/reports/cucumber-report.html
 ```
@@ -168,7 +168,7 @@ export class CustomWorld extends World {
 }
 ```
 
-### Uso:
+### Usage:
 ```typescript
 this.data["token"] = "test123";
 console.log(this.data["token"]);
@@ -176,28 +176,28 @@ console.log(this.data["token"]);
 
 ---
 
-## 🧷 Validaciones con Playwright
+## 🧷 Validations with Playwright
 ```typescript
 await expect(locator).toBeVisible();
-await expect(locator).toHaveText("Bienvenido");
+await expect(locator).toHaveText("Welcome");
 ```
 
 ---
 
-## 🧩 Ejemplo de Feature
+## 🧩 Feature Example
 ```gherkin
-Feature: Login aplicación
+Feature: Application Login
 
-  @regresion
-  Scenario: Usuario puede autenticarse
-    Given que el usuario está en la página de login
-    When ingreso el usuario "standard_user" y la contraseña "secret_sauce"
-    Then debo ver el mensaje de bienvenida
+  @regression
+  Scenario: User can authenticate
+    Given the user is on the login page
+    When I enter the username "standard_user" and password "secret_sauce"
+    Then I should see the welcome message
 ```
 
 ---
 
-## 🔧 Scripts del Proyecto
+## 🔧 Project Scripts
 ```json
 "scripts": {
   "report": "start test-results/reports/cucumber-report.html",
@@ -217,7 +217,7 @@ test-results/
 
 ---
 
-## 📌 Requisitos
+## 📌 Requirements
 
 * Node.js 18+
 * Playwright 1.56+
@@ -226,18 +226,18 @@ test-results/
 
 ---
 
-## 📝 Licencia
+## 📝 License
 
-Este proyecto está bajo la licencia MIT.
-
----
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para sugerencias o mejoras.
+This project is under the MIT license.
 
 ---
 
-## 📧 Contacto
+## 🤝 Contributions
 
-Para preguntas o soporte, contacta al equipo de QA Automation.
+Contributions are welcome. Please open an issue or pull request for suggestions or improvements.
+
+---
+
+## 📧 Contact
+
+For questions or support, contact the QA Automation team.

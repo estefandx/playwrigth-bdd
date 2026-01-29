@@ -17,10 +17,10 @@ export class CustomWorld extends World {
   constructor(options: IWorldOptions) {
     super(options);
 
-    // Recibe parámetros desde cucumber.js si usas --world-parameters
+    // Receives parameters from cucumber.js if you use --world-parameters
     this.parameters = options.parameters || {};
     this.data  = {};
-    // Inicializar variables
+    // Initialize variables
     this.browser = undefined;
     this.context = undefined;
     this.page = undefined;

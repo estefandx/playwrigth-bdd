@@ -1,18 +1,17 @@
 Feature: Login
 
-  @regresion
-  Scenario: Login válido
-    Given que el usuario está en la página de login
-    When ingreso el usuario "standard_user" y la contraseña "secret_sauce"
-    Then debo ver el mensaje de bienvenida
+  @regression
+  Scenario: Valid login
+    Given the user is on the login page
+    When I enter the username "standard_user" and password "secret_sauce"
+    Then I should see the welcome message
 
-    Scenario: Login invalido
-    Given que el usuario está en la página de login
-    When ingreso el usuario "standard_user" y la contraseña "secret_sauce"
-    Then debo ver el mensaje de bienvenida
+  Scenario: Invalid login
+    Given the user is on the login page
+    When I enter the username "standard_user" and password "secret_sauce"
+    Then I should see the welcome message
 
-
-    Scenario: Login invalido falla
-    Given que el usuario está en la página de login
-    When ingreso el usuario "standard_user" y la contraseña "secret_sauce"
-    Then debo ver un error
+  Scenario: Invalid login fails
+    Given the user is on the login page
+    When I enter the username "standard_user" and password "secret_sauce"
+    Then I should see an error
